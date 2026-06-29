@@ -94,11 +94,14 @@ echo ""
 echo "编译完成:"
 ls *.so 2>/dev/null
 
-# ── 6. Build macOS .app with PyInstaller ──
+# ── 6. Build macOS app with PyInstaller ──
 echo ""
 echo "=== PyInstaller 打包 ==="
+# Prevent PyInstaller from using the Windows spec file
+rm -f AudioFlow.spec
 python3 -m PyInstaller \
     --name="Ai Studio" \
+    --onedir \
     --windowed \
     --add-data="tools:tools" \
     --add-data="assets:assets" \
@@ -118,9 +121,11 @@ python3 -m PyInstaller \
     --hidden-import=PySide6.QtWebEngineWidgets \
     --hidden-import=PySide6.QtWebEngineCore \
     --noconfirm \
-    launcher.py 2>&1 | tail -5
+    launcher.py 2>&1 | tail -10
 
 echo ""
+echo "=== 查看输出结构 ==="
+find dist -maxdepth 3 -type f 2>/dev/null | head -20
 echo "============================================"
 echo "  构建完成!"
 echo "  输出: dist/Ai Studio.app"
