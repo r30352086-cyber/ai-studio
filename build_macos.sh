@@ -100,7 +100,6 @@ echo "=== PyInstaller 打包 ==="
 python3 -m PyInstaller \
     --name="Ai Studio" \
     --windowed \
-    --icon=assets/audioflow.icns \
     --add-data="tools:tools" \
     --add-data="assets:assets" \
     --add-data="PYZ.pyz_extracted:PYZ.pyz_extracted" \
