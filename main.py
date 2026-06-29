@@ -574,7 +574,7 @@ class MainWindow(QMainWindow):
         browser_widget = QWidget()
         lay = QVBoxLayout(browser_widget); lay.setContentsMargins(0, 0, 0, 0); lay.setSpacing(0)
         profile_dir = str(settings.app_data_dir() / "DouyinWebProfile")
-        profile = QWebEngineProfile("douyin_music", browser_widget)
+        profile = QWebEngineProfile(browser_widget)
         profile.setPersistentStoragePath(profile_dir)
         profile.setHttpCacheType(QWebEngineProfile.HttpCacheType.DiskHttpCache)
         profile.setPersistentCookiesPolicy(QWebEngineProfile.PersistentCookiesPolicy.AllowPersistentCookies)
