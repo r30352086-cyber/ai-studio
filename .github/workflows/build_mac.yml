@@ -1,0 +1,38 @@
+name: Build macOS App
+
+on:
+  workflow_dispatch:  # 手动触发
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install PySide6 Cython pyinstaller requests
+
+    - name: Install audio tools
+      run: |
+        brew install sox ffmpeg
+
+    - name: Build Ai Studio.app
+      run: |
+        chmod +x build_macos.sh
+        ./build_macos.sh
+
+    - name: Upload .app
+      uses: actions/upload-artifact@v4
+      with:
+        name: Ai_Studio_macOS
+        path: dist/Ai Studio.app

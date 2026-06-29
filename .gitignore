@@ -1,0 +1,29 @@
+# PyInstaller
+dist/
+build/
+*.spec
+__pycache__/
+
+
+# Cython build artifacts
+*.c
+*.pyd
+*.so
+*.dylib
+
+# Large PySide6 in PYZ (will be installed via pip on Mac)
+PYZ.pyz_extracted/PySide6/
+
+# Dev tools
+_build_cython.bat
+_reconstruct_main.py
+src_backup/
+
+# IDE
+.vscode/
+.idea/
+PYZ.pyz_extracted/PySide6/
+tools/ffmpeg.exe
+tools/ffprobe.exe
+tools/ffmpeg.exe
+tools/ffprobe.exe
